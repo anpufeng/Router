@@ -122,13 +122,13 @@ public class Router {
         }
         
         guard let clsName = classes[key], cls = NSClassFromString(clsName) as? Routable.Type else {
-            print("未找到可open对象，请确保正确实现Routable并已map")
+            print("can not find the maaped vc, make sure implement protocol routable and call map method")
             completion?(opened: nil)
             return
         }
         
         if nav.presentedViewController != nil {
-            print("先dismiss掉已present出的vc:\(nav.presentedViewController)")
+            print("dismiss the vc that has been presented:\(nav.presentedViewController)")
             nav.dismissViewControllerAnimated(false, completion: {
                 
             })
@@ -157,9 +157,7 @@ public class Router {
         }
     }
     
-    /**
-     打开外部跳转
-     */
+   
     public func openExternal(url: String, type: ExternalRouterType = .Safari) {
         guard let routerURL = type.router(url) else {
             return
@@ -199,7 +197,7 @@ public class Router {
                     }
                 }
             } else {
-                print("不能找到要pop的对象")
+                print("can not find the vc mapped to the key: \(to)")
             }
         }
         

@@ -153,9 +153,9 @@ extension FirstViewController: Routable {
             routerParam.valueWithKey(kStructKey, out: &vc.structModel)
             routerParam.valueWithKey(kClosureKey, out: &vc.closure)
             
-            print("获取到参数 String姓名: \(vc.name)\n Int年龄: \(vc.age)\n Enum周几: \(vc.week)\n Class: \(vc.classModel?.description)\n Struct: \(vc.structModel)\n")
+            print("got params String name: \(vc.name)\n Int age : \(vc.age)\n Enum week: \(vc.week)\n Class: \(vc.classModel?.description)\n Struct: \(vc.structModel)\n")
             let result = vc.closure!(name: "Lily", age: 10)
-            print("获取到闭包并执行后结果: \(result)")
+            print("closure result: \(result)")
         }
         
         return vc
