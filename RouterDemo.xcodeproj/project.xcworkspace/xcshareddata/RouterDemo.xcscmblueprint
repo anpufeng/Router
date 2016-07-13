@@ -1,0 +1,32 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "7DBE330771B75E777456C3FC59605B1FF029BD3D",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "69f1b054-4c58-4f65-b1de-d0a8cdbc02e8++2159" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "69f1b054-4c58-4f65-b1de-d0a8cdbc02e8++2159" : 0,
+    "7DBE330771B75E777456C3FC59605B1FF029BD3D" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "8AC57B07-277E-4A09-A16D-678A07756A44",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "69f1b054-4c58-4f65-b1de-d0a8cdbc02e8++2159" : "",
+    "7DBE330771B75E777456C3FC59605B1FF029BD3D" : "Router\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "RouterDemo",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "RouterDemo.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/10.253.101.99\/repos\/mobile",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "69f1b054-4c58-4f65-b1de-d0a8cdbc02e8++2159"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/anpufeng\/Router",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7DBE330771B75E777456C3FC59605B1FF029BD3D"
+    }
+  ]
+}
