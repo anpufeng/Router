@@ -134,9 +134,7 @@ public class Router {
         
         if nav.presentedViewController != nil {
             print("dismiss the vc that has been presented:\(nav.presentedViewController)")
-            nav.dismissViewControllerAnimated(false, completion: {
-                
-            })
+            nav.dismissViewControllerAnimated(false, completion: nil)
         }
         
         guard let vc = cls.initWithParams(params) else {
@@ -183,9 +181,7 @@ public class Router {
         }
         
         if nav.presentedViewController != nil {
-            nav.dismissViewControllerAnimated(animated, completion: { 
-                
-            })
+            nav.dismissViewControllerAnimated(animated, completion: nil)
         } else {
             nav.popViewControllerAnimated(animated)
         }
@@ -230,9 +226,7 @@ public class Router {
         }
         
         if nav.presentedViewController != nil {
-            nav.dismissViewControllerAnimated(animated, completion: {
-                
-            })
+            nav.dismissViewControllerAnimated(animated, completion: nil)
         } else {
             if toRoot {
                 nav.popToRootViewControllerAnimated(animated)
