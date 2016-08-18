@@ -32,6 +32,7 @@ class TabBarController: UITabBarController {
         router.map(LoginViewController.routableKey, className: LoginViewController.description())
         router.map(WebViewController.routableKey, className: WebViewController.description())
         router.map(FirstNavigationController.routableKey, className: FirstNavigationController.description())
+        router.map(NoXibViewController.routableKey, className: NoXibViewController.description())
     }
     
     override func didReceiveMemoryWarning() {

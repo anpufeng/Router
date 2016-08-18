@@ -46,7 +46,7 @@ class WebViewController: UIViewController {
 }
 
 extension WebViewController: Routable {
-    static func initWithParams(params: RouterParam?) -> UIViewController {
+    static func initWithParams(params: RouterParam?) -> UIViewController? {
         let sb = UIStoryboard.init(name: "Main", bundle: nil)
         let vc = sb.instantiateViewControllerWithIdentifier("WebViewController") as! WebViewController
         vc.hidesBottomBarWhenPushed = true

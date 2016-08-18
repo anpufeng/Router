@@ -45,7 +45,8 @@ class SecondViewController: UIViewController {
 //MARK: routable
 
 extension SecondViewController: Routable {
-    static func initWithParams(params: RouterParam?) -> UIViewController {
+    
+    static func initWithParams(params: RouterParam?) -> UIViewController? {
         let sb = UIStoryboard.init(name: "Main", bundle: nil)
         let vc = sb.instantiateViewControllerWithIdentifier("SecondViewController") as! SecondViewController
         vc.hidesBottomBarWhenPushed = true

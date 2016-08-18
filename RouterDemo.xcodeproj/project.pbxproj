@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA11B1F01D65660300E0E645 /* NoXibViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA11B1EF1D65660300E0E645 /* NoXibViewController.swift */; };
 		AA64C2A61D33645E00F3DA75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA64C2A51D33645E00F3DA75 /* AppDelegate.swift */; };
 		AA64C2AB1D33645E00F3DA75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA64C2A91D33645E00F3DA75 /* Main.storyboard */; };
 		AA64C2AD1D33645E00F3DA75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA64C2AC1D33645E00F3DA75 /* Assets.xcassets */; };
@@ -80,6 +81,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AA11B1EF1D65660300E0E645 /* NoXibViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoXibViewController.swift; sourceTree = "<group>"; };
 		AA64C2A21D33645E00F3DA75 /* RouterDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RouterDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA64C2A51D33645E00F3DA75 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA64C2AA1D33645E00F3DA75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				AA64C2FE1D336D5200F3DA75 /* FirstNavigationController.swift */,
 				AA64C3001D336D6100F3DA75 /* LoginViewController.swift */,
 				AA64C3021D339CD500F3DA75 /* WebViewController.swift */,
+				AA11B1EF1D65660300E0E645 /* NoXibViewController.swift */,
 			);
 			path = RouterDemo;
 			sourceTree = "<group>";
@@ -434,6 +437,7 @@
 				AA64C3011D336D6100F3DA75 /* LoginViewController.swift in Sources */,
 				AA64C2FD1D336CE600F3DA75 /* SecondViewController.swift in Sources */,
 				AA64C2FB1D336CDB00F3DA75 /* FirstViewController.swift in Sources */,
+				AA11B1F01D65660300E0E645 /* NoXibViewController.swift in Sources */,
 				AA64C2FF1D336D5200F3DA75 /* FirstNavigationController.swift in Sources */,
 				AA64C3031D339CD500F3DA75 /* WebViewController.swift in Sources */,
 				AA64C2A61D33645E00F3DA75 /* AppDelegate.swift in Sources */,
@@ -760,6 +764,7 @@
 				AA64C2CC1D33645E00F3DA75 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AA64C2CD1D33645E00F3DA75 /* Build configuration list for PBXNativeTarget "RouterDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -768,6 +773,7 @@
 				AA64C2CF1D33645E00F3DA75 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AA64C2D01D33645E00F3DA75 /* Build configuration list for PBXNativeTarget "RouterDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -776,6 +782,7 @@
 				AA64C2D21D33645E00F3DA75 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AA64C2EF1D33647200F3DA75 /* Build configuration list for PBXNativeTarget "Router" */ = {
 			isa = XCConfigurationList;
@@ -784,6 +791,7 @@
 				AA64C2F11D33647200F3DA75 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AA64C2F31D33647200F3DA75 /* Build configuration list for PBXNativeTarget "RouterTests" */ = {
 			isa = XCConfigurationList;
@@ -792,6 +800,7 @@
 				AA64C2F51D33647200F3DA75 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -39,7 +39,7 @@ class LoginViewController: UIViewController {
 //MARK: routable
 
 extension LoginViewController: Routable {
-    static func initWithParams(params: RouterParam?) -> UIViewController {
+    static func initWithParams(params: RouterParam?) -> UIViewController? {
         let vc = LoginViewController()
 //        let sb = UIStoryboard.init(name: "Main", bundle: nil)
 //        let vc = sb.instantiateViewControllerWithIdentifier("LoginViewController") as! SecondViewController

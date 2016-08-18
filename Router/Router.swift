@@ -24,11 +24,11 @@ public enum ExternalRouterType {
         case .Safari:
             return NSURL(string: url)
         case .Phone:
-            return NSURL(string: "tel://\(url)")
+            return NSURL(string: "tel:\(url)")
         case .SMS:
-            return NSURL(string: "sms://\(url)")
+            return NSURL(string: "sms:\(url)")
         case .Mail:
-            return NSURL(string: "mailto://\(url)")
+            return NSURL(string: "mailto:\(url)")
         case .OtherApp:
             return NSURL(string: url)
         }
@@ -42,7 +42,7 @@ public protocol Routable {
      类的初始化方法 
      - params 传参字典
      */
-    static func initWithParams(params: RouterParam?) -> UIViewController
+    static func initWithParams(params: RouterParam?) -> UIViewController?
     /**
      每个类跳转对应的key
      */
@@ -134,7 +134,10 @@ public class Router {
             })
         }
         
-        let vc = cls.initWithParams(params)
+        guard let vc = cls.initWithParams(params) else {
+            print("concrete vc error");
+            return
+        }
         if let options = options {
             if options.isModal {
                 vc.modalTransitionStyle = options.transitionStyle
@@ -184,6 +187,7 @@ public class Router {
     
     public func pop(to to: String, animated: Bool) {
         guard let nav = navigationController else {
+            print("no navigationController")
             return
         }
         
@@ -214,7 +218,7 @@ public class Router {
     }
  
     
-    public func pop(toRoot isRoot: Bool, animated: Bool = true) {
+    public func pop(toRoot toRoot: Bool, animated: Bool = true) {
         guard let nav = navigationController else {
             return
         }
@@ -224,7 +228,7 @@ public class Router {
                 
             })
         } else {
-            if isRoot {
+            if toRoot {
                 nav.popToRootViewControllerAnimated(animated)
             } else {
                 nav.popViewControllerAnimated(animated)

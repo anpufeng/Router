@@ -52,9 +52,6 @@ class FirstViewController: UIViewController {
     var classModel: ClassModel?
     var structModel: StructModel?
     var closure:((name: String, age: Int) -> String)?
-    
-    
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,6 +115,18 @@ class FirstViewController: UIViewController {
     @IBAction func responseToExternalWebBtn(sender: AnyObject) {
         Router.sharedInstance.openExternal("http://www.baidu.com")
     }
+    @IBAction func responseToAlertBtn(sender: UIButton) {
+//        let alert = UIAlertController(title: "title", message: "message", preferredStyle: .Alert)
+//        let action = UIAlertAction(title: "ok", style: .Default, handler: nil)
+//        alert.addAction(action)
+//        navigationController?.presentViewController(alert, animated: true, completion: nil)
+        
+        
+        let params: RouterParam = [NoXibViewController.kAgeKey: 999,
+                                   NoXibViewController.kNameKey: "immortal"]
+        
+        Router.sharedInstance.open(NoXibViewController.routableKey, params: params)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -139,7 +148,7 @@ class FirstViewController: UIViewController {
 //MARK: routable
 
 extension FirstViewController: Routable {
-    static func initWithParams(params: RouterParam?) -> UIViewController {
+    static func initWithParams(params: RouterParam?) -> UIViewController? {
         let sb = UIStoryboard.init(name: "Main", bundle: nil)
         let vc = sb.instantiateViewControllerWithIdentifier("FirstViewController") as! FirstViewController
         vc.hidesBottomBarWhenPushed = true
@@ -154,7 +163,7 @@ extension FirstViewController: Routable {
             routerParam.valueWithKey(kClosureKey, out: &vc.closure)
             
             print("got params String name: \(vc.name)\n Int age : \(vc.age)\n Enum week: \(vc.week)\n Class: \(vc.classModel?.description)\n Struct: \(vc.structModel)\n")
-            let result = vc.closure!(name: "Lily", age: 10)
+            let result = vc.closure?(name: "Lily", age: 10)
             print("closure result: \(result)")
         }
         
