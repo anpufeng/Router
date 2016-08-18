@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AA11B1F01D65660300E0E645 /* NoXibViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA11B1EF1D65660300E0E645 /* NoXibViewController.swift */; };
+		AA11B1F21D6597C200E0E645 /* SpecialRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA11B1F11D6597C200E0E645 /* SpecialRoutable.swift */; };
 		AA64C2A61D33645E00F3DA75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA64C2A51D33645E00F3DA75 /* AppDelegate.swift */; };
 		AA64C2AB1D33645E00F3DA75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA64C2A91D33645E00F3DA75 /* Main.storyboard */; };
 		AA64C2AD1D33645E00F3DA75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA64C2AC1D33645E00F3DA75 /* Assets.xcassets */; };
@@ -82,6 +83,7 @@
 
 /* Begin PBXFileReference section */
 		AA11B1EF1D65660300E0E645 /* NoXibViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoXibViewController.swift; sourceTree = "<group>"; };
+		AA11B1F11D6597C200E0E645 /* SpecialRoutable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialRoutable.swift; sourceTree = "<group>"; };
 		AA64C2A21D33645E00F3DA75 /* RouterDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RouterDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA64C2A51D33645E00F3DA75 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA64C2AA1D33645E00F3DA75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 				AA64C2F61D3364D100F3DA75 /* Router.swift */,
 				AA64C2DA1D33647200F3DA75 /* Router.h */,
 				AA64C2DC1D33647200F3DA75 /* Info.plist */,
+				AA11B1F11D6597C200E0E645 /* SpecialRoutable.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -466,6 +469,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA64C2F71D3364D100F3DA75 /* Router.swift in Sources */,
+				AA11B1F21D6597C200E0E645 /* SpecialRoutable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -97,25 +97,30 @@ public class Router {
    
     /**
      打开对应key的界面
-     - completion 完成push/present后会调用此closure, 参数为通过key刚初始化的ViewControler
+     - completion 完成push/present后会调用此closure, 在animated完成前, 参数为通过key刚初始化的ViewControler
      */
     public func open(key: String, animated: Bool = true, completion: ((opened: UIViewController?) -> Void)? = nil) {
-       open(key, params: nil, options: nil, animated: animated, completion: completion)
+       open(key, params: nil, options: nil, animated: animated, completion: completion, unused: true)
     }
     
     public func open(key:String, params: RouterParam, animated: Bool = true, completion: ((opened: UIViewController?) -> Void)? = nil) {
-       open(key, params: params, options: nil, animated: animated, completion: completion)
+       open(key, params: params, options: nil, animated: animated, completion: completion, unused: true)
     }
     
     public func open(key:String, options: RouterOptions, animated: Bool = true, completion: ((opened: UIViewController?) -> Void)? = nil) {
-       open(key, params: nil, options: options, animated: animated, completion: completion)
+       open(key, params: nil, options: options, animated: animated, completion: completion, unused: true)
     }
     
-    public func open(key: String, params: RouterParam, options: RouterOptions, animated: Bool, completion: ((opened: UIViewController) -> Void)? = nil) {
-       open(key, params: params, options: options, animated: animated, completion: completion)
+    public func open(key: String, params: RouterParam, options: RouterOptions, animated: Bool, completion: ((opened: UIViewController?) -> Void)? = nil) {
+       open(key, params: params, options: options, animated: animated, completion: completion, unused: true)
     }
  
-    private func open(key: String, params: RouterParam?, options: RouterOptions?, animated: Bool, completion: ((opened: UIViewController?) -> Void)?) {
+    /**
+     private 只为调用方便
+ 
+     - parameter unused:     仅为区分函数调用
+     */
+    private func open(key: String, params: RouterParam?, options: RouterOptions?, animated: Bool, completion: ((opened: UIViewController?) -> Void)?, unused: Bool) {
         guard let nav = navigationController else {
              completion?(opened: nil)
             return
@@ -138,13 +143,14 @@ public class Router {
             print("concrete vc error");
             return
         }
+        
         if let options = options {
             if options.isModal {
                 vc.modalTransitionStyle = options.transitionStyle
                 vc.modalPresentationStyle = options.presentationStyle
-                nav.presentViewController(vc, animated: animated, completion: {
-                    completion?(opened: vc)
-                })
+                nav.presentViewController(vc, animated: animated, completion: nil)
+                completion?(opened: vc)
+                
             } else {
                 if options.shouldOpenAsRoot {
                     nav.setViewControllers([vc], animated: animated)
@@ -248,7 +254,7 @@ public protocol RouteParamsConvertable {
 
 //MARK: RouterParams
 
-public class RouterParams: RouteParamsConvertable {
+public class RouterParamsConverter: RouteParamsConvertable {
    
     var params: RouterParam
     public func valueWithKey<T>(key: String, inout out: T?) -> Void {

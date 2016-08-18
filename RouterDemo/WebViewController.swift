@@ -50,9 +50,6 @@ extension WebViewController: Routable {
         let sb = UIStoryboard.init(name: "Main", bundle: nil)
         let vc = sb.instantiateViewControllerWithIdentifier("WebViewController") as! WebViewController
         vc.hidesBottomBarWhenPushed = true
-//                if let params = params {
-//                    let rp = RouterParams(params: params)
-//                }
         return vc
     }
     

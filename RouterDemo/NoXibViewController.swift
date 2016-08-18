@@ -46,11 +46,11 @@ class NoXibViewController: UIViewController {
 extension NoXibViewController: Routable {
     static func initWithParams(params: RouterParam?) -> UIViewController? {
         if let params = params {
-            let routerParam = RouterParams(params: params)
+            let converter = RouterParamsConverter(params: params)
             var age: Int?
             var name: String?
-            routerParam.valueWithKey(kAgeKey, out: &age)
-            routerParam.valueWithKey(kNameKey, out: &name)
+            converter.valueWithKey(kAgeKey, out: &age)
+            converter.valueWithKey(kNameKey, out: &name)
             guard let realAge = age, realName = name else {
                 return nil
             }

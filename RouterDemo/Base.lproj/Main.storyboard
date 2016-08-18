@@ -119,10 +119,17 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NyF-9P-NAR">
-                                <rect key="frame" x="120" y="562" width="146" height="30"/>
+                                <rect key="frame" x="20" y="561" width="146" height="30"/>
                                 <state key="normal" title="RouterAlertController"/>
                                 <connections>
                                     <action selector="responseToAlertBtn:" destination="akZ-dH-pAL" eventType="touchUpInside" id="Nry-mc-SxQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GU8-I0-aEW">
+                                <rect key="frame" x="236" y="561" width="87" height="30"/>
+                                <state key="normal" title="RouterNoXib"/>
+                                <connections>
+                                    <action selector="responseToNoXibBtn:" destination="akZ-dH-pAL" eventType="touchUpInside" id="oV0-pD-NcH"/>
                                 </connections>
                             </button>
                         </subviews>

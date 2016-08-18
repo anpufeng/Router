@@ -116,12 +116,18 @@ class FirstViewController: UIViewController {
         Router.sharedInstance.openExternal("http://www.baidu.com")
     }
     @IBAction func responseToAlertBtn(sender: UIButton) {
-//        let alert = UIAlertController(title: "title", message: "message", preferredStyle: .Alert)
-//        let action = UIAlertAction(title: "ok", style: .Default, handler: nil)
-//        alert.addAction(action)
-//        navigationController?.presentViewController(alert, animated: true, completion: nil)
-        
-        
+        let param = UIAlertController.alertParams(nil, message: "message", preferredStyle: .Alert)
+        Router.sharedInstance.open(UIAlertController.routableKey, params: param, options: UIAlertController.defaultRouterOptions, animated: true) { (opened) in
+            if let alertController = opened as? UIAlertController {
+                let okAction = UIAlertAction(title: "ok", style: .Default, handler: { (alertAction) in
+                    print("clicked ok")
+                })
+                
+                alertController.addAction(okAction)
+            }
+        }
+    }
+    @IBAction func responseToNoXibBtn(sender: UIButton) {
         let params: RouterParam = [NoXibViewController.kAgeKey: 999,
                                    NoXibViewController.kNameKey: "immortal"]
         
@@ -154,13 +160,13 @@ extension FirstViewController: Routable {
         vc.hidesBottomBarWhenPushed = true
         
         if let params = params {
-            let routerParam = RouterParams(params: params)
-            routerParam.valueWithKey(kStringKey, out: &vc.name)
-            routerParam.valueWithKey(kIntKey, out: &vc.age)
-            routerParam.valueWithKey(kEnumKey, out: &vc.week)
-            routerParam.valueWithKey(kClassKey, out: &vc.classModel)
-            routerParam.valueWithKey(kStructKey, out: &vc.structModel)
-            routerParam.valueWithKey(kClosureKey, out: &vc.closure)
+            let converter = RouterParamsConverter(params: params)
+            converter.valueWithKey(kStringKey, out: &vc.name)
+            converter.valueWithKey(kIntKey, out: &vc.age)
+            converter.valueWithKey(kEnumKey, out: &vc.week)
+            converter.valueWithKey(kClassKey, out: &vc.classModel)
+            converter.valueWithKey(kStructKey, out: &vc.structModel)
+            converter.valueWithKey(kClosureKey, out: &vc.closure)
             
             print("got params String name: \(vc.name)\n Int age : \(vc.age)\n Enum week: \(vc.week)\n Class: \(vc.classModel?.description)\n Struct: \(vc.structModel)\n")
             let result = vc.closure?(name: "Lily", age: 10)

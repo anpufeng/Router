@@ -33,6 +33,7 @@ class TabBarController: UITabBarController {
         router.map(WebViewController.routableKey, className: WebViewController.description())
         router.map(FirstNavigationController.routableKey, className: FirstNavigationController.description())
         router.map(NoXibViewController.routableKey, className: NoXibViewController.description())
+        router.map(UIAlertController.routableKey, className: UIAlertController.description())
     }
     
     override func didReceiveMemoryWarning() {
