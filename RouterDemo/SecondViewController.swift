@@ -57,4 +57,8 @@ extension SecondViewController: Routable {
     static var routableKey: String {
         return "SecondViewController"
     }
+    
+    static var routerOption: RouterOptions {
+       return RouterOptions(presentationStyle: .FormSheet, transitionStyle: .FlipHorizontal, isModal: true, isRoot: false)
+    }
 }

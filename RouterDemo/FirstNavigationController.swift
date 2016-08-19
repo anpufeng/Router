@@ -48,4 +48,8 @@ extension FirstNavigationController: Routable {
     static var routableKey: String {
         return "FirstNavigationController"
     }
+    
+    static var routerOption: RouterOptions {
+        return RouterOptions(presentationStyle: .Popover, transitionStyle: .FlipHorizontal, isModal: true, isRoot: false)
+    }
 }

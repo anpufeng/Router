@@ -77,8 +77,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a9O-BI-Hr2">
-                                <rect key="frame" x="124" y="301" width="128" height="30"/>
-                                <state key="normal" title="PopWithoutAnimat"/>
+                                <rect key="frame" x="120" y="301" width="137" height="30"/>
+                                <state key="normal" title="PopWithoutAnimate"/>
                                 <connections>
                                     <action selector="responseToWithoutAnimatBtn:" destination="akZ-dH-pAL" eventType="touchUpInside" id="gOT-qJ-wtb"/>
                                 </connections>
@@ -108,7 +108,7 @@
                                 <rect key="frame" x="92" y="225" width="202" height="30"/>
                                 <state key="normal" title="RouterWithOption(NavModal)"/>
                                 <connections>
-                                    <action selector="responseToRouterOptionNavBtn:" destination="akZ-dH-pAL" eventType="touchUpInside" id="YIu-6a-jZ3"/>
+                                    <action selector="responseToRouterOptionsNavBtn:" destination="akZ-dH-pAL" eventType="touchUpInside" id="YIu-6a-jZ3"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="23N-8W-ypE">
@@ -215,7 +215,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zXb-HK-oG5">
                                 <rect key="frame" x="101" y="412" width="134" height="30"/>
-                                <state key="normal" title="RouterOptionModal"/>
+                                <state key="normal" title="RouterOptionsModal"/>
                                 <connections>
                                     <action selector="responseToOptionModalBtn:" destination="oaZ-NX-nRo" eventType="touchUpInside" id="U7k-oE-vem"/>
                                 </connections>

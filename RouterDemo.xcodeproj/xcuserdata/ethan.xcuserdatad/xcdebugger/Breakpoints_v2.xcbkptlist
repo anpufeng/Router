@@ -25,14 +25,46 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RouterDemo/WebViewController.swift"
-            timestampString = "489982624.641087"
+            filePath = "RouterDemo/NoXibViewController.swift"
+            timestampString = "493265733.738127"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
-            landmarkName = "loadURL(_:)"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "initWithParams(_:)"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static RouterDemo.NoXibViewController.initWithParams (Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, protocol&lt;&gt;&gt;&gt;) -&gt; Swift.Optional&lt;__ObjC.UIViewController&gt;"
+                  moduleName = "RouterDemo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ethan/Documents/SourceTree/Router/RouterDemo/NoXibViewController.swift"
+                  timestampString = "493280140.859528"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "640">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static RouterDemo.NoXibViewController.initWithParams (Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, protocol&lt;&gt;&gt;&gt;) -&gt; Swift.Optional&lt;__ObjC.UIViewController&gt;"
+                  moduleName = "RouterDemo"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ethan/Documents/SourceTree/Router/RouterDemo/NoXibViewController.swift"
+                  timestampString = "493280140.859721"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "673">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -41,61 +73,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RouterDemo/WebViewController.swift"
-            timestampString = "489982644.260601"
+            filePath = "RouterDemo/NoXibViewController.swift"
+            timestampString = "493265806.215469"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "loadURL(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Router/Router.swift"
-            timestampString = "493200853.414273"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
-            landmarkName = "open(_:params:options:animated:completion:unused:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Router/Router.swift"
-            timestampString = "493200853.414273"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
-            landmarkName = "open(_:params:options:animated:completion:unused:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Router/Router.swift"
-            timestampString = "493199520.412526"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
-            landmarkName = "open(_:options:animated:completion:)"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "initWithParams(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -106,28 +90,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Router/Router.swift"
-            timestampString = "493199526.106043"
+            timestampString = "493280199.115294"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
-            landmarkName = "open(_:params:animated:completion:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Router/Router.swift"
-            timestampString = "493200742.713"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
-            landmarkName = "open(_:params:options:animated:completion:)"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
+            landmarkName = "pop(animated:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

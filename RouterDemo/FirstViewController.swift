@@ -93,12 +93,10 @@ class FirstViewController: UIViewController {
     }
     
     @IBAction func responseToOptionBtn(sender: AnyObject) {
-        let option = RouterOptions(presentationStyle: .FormSheet, transitionStyle: .FlipHorizontal, isModal: true, isRoot: false)
-        Router.sharedInstance.open(SecondViewController.routableKey, options: option)
+        Router.sharedInstance.open(SecondViewController.routableKey, options: SecondViewController.routerOption)
     }
-    @IBAction func responseToRouterOptionNavBtn(sender: UIButton) {
-        let option = RouterOptions(presentationStyle: .Popover, transitionStyle: .FlipHorizontal, isModal: true, isRoot: false)
-        Router.sharedInstance.open(FirstNavigationController.routableKey, options: option)
+    @IBAction func responseToRouterOptionsNavBtn(sender: UIButton) {
+        Router.sharedInstance.open(FirstNavigationController.routableKey, options: FirstNavigationController.routerOption)
     }
     @IBAction func responseToPopBtn(sender: UIButton) {
         Router.sharedInstance.pop()

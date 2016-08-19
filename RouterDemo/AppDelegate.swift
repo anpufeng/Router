@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Router
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        if let tabbarController = window?.rootViewController as? TabBarController {
+            initRouter(tabbarController)
+            tabbarController.delegate = self
+        }
+        
         return true
     }
 
@@ -42,5 +49,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+}
+
+
+extension AppDelegate: UITabBarControllerDelegate {
+    func initRouter(tabBarController: TabBarController) {
+        guard let navs = tabBarController.viewControllers, nav = navs[0] as? UINavigationController else {
+            return
+        }
+        
+        let router = Router.sharedInstance
+        router.navigationController = nav
+        
+        router.map(FirstViewController.routableKey, className: FirstViewController.description())
+        router.map(SecondViewController.routableKey, className: SecondViewController.description())
+        router.map(LoginViewController.routableKey, className: LoginViewController.description())
+        router.map(WebViewController.routableKey, className: WebViewController.description())
+        router.map(FirstNavigationController.routableKey, className: FirstNavigationController.description())
+        router.map(NoXibViewController.routableKey, className: NoXibViewController.description())
+        router.map(UIAlertController.routableKey, className: UIAlertController.description())
+    }
+    
+    func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
+        if let nav = viewController as? UINavigationController {
+            Router.sharedInstance.navigationController = nav
+        }
+    }
 }
 
