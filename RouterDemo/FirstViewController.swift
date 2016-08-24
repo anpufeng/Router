@@ -3,7 +3,7 @@
 //  RouterDemo
 //
 //  Created by ethan on 16/7/11.
-//  Copyright © 2016年 zhongan. All rights reserved.
+//  Copyright © 2016年 ethanwhy. All rights reserved.
 //
 
 import UIKit
@@ -71,7 +71,7 @@ class FirstViewController: UIViewController {
             }()
         }
         
-        let params: RouterParam = [FirstViewController.kStringKey: "zhongan",
+        let params: RouterParam = [FirstViewController.kStringKey: "ethanwhy",
                                    FirstViewController.kIntKey: 3,
                                    FirstViewController.kEnumKey: Week.Monday,
                                    FirstViewController.kClassKey: ClassModel(name: "china"),

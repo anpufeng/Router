@@ -1,9 +1,9 @@
 //
 //  Router.swift
-//  ZAFinance
+//  ethanwhy
 //
 //  Created by ethan on 16/7/8.
-//  Copyright © 2016年 zhongan. All rights reserved.
+//  Copyright © 2016年 ethanwhy. All rights reserved.
 //
 
 import Foundation
