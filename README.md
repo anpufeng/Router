@@ -29,14 +29,14 @@ extension FirstViewController: Routable {
     }
 }
 ```
-###call `map` before you route your `viewController`
+### call `map` before you route your `viewController`
 ```swift
   let router = Router.sharedInstance
   router.navigationController = nav
   router.map(FirstViewController.routableKey, className: FirstViewController.description())      router.map(SecondViewController.routableKey, className: SecondViewController.description())
   router.map(WebViewController.routableKey, className: WebViewController.description())      router.map(FirstNavigationController.routableKey, className: FirstNavigationController.description())
 ```
-###call `open` to route your `viewController`
+### call `open` to route your `viewController`
 ```swift
 Router.sharedInstance.open(FirstViewController.routableKey)
 ///got the vc just inited
@@ -46,7 +46,7 @@ Router.sharedInstance.open(FirstViewController.routableKey)
     }
   }
 ```
-###route with params `RouterParam`
+### route with params `RouterParam`
 ```swift
 let params: RouterParam = [FirstViewController.kStringKey: "zhongan",
                             FirstViewController.kIntKey: 3,
@@ -57,18 +57,18 @@ let params: RouterParam = [FirstViewController.kStringKey: "zhongan",
         
 Router.sharedInstance.open(FirstViewController.routableKey, params: params)
 ```
-###route with options `RouterOptions`
+### route with options `RouterOptions`
 ```swift
 let option = RouterOptions(presentationStyle: .Popover, transitionStyle: .FlipHorizontal, isModal: true)
 Router.sharedInstance.open(FirstNavigationController.routableKey, options: option)
 ```
-###pop your `viewController`
+### pop your `viewController`
 ```swift
 Router.sharedInstance.pop()
 ///pop to root
 Router.sharedInstance.pop(toRoot:true, animated: true)
 ```
-###special viewController like `UIAlertController`
+### special viewController like `UIAlertController`
 ```swift
 let param = UIAlertController.alertParams(nil, message: "message", preferredStyle: .Alert)
 Router.sharedInstance.open(UIAlertController.routableKey, params: param, options: UIAlertController.defaultRouterOptions, animated: true) { (opened) in
@@ -81,6 +81,6 @@ Router.sharedInstance.open(UIAlertController.routableKey, params: param, options
     }
 }
 ```
-###TODO 
+### TODO 
  * more special ViewController(UIImagePickerController ...)
  * more test
