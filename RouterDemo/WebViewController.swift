@@ -19,12 +19,12 @@ class WebViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    func loadURL(url: String) {
-        guard let u = NSURL(string: url) else {
+    func loadURL(_ url: String) {
+        guard let u = URL(string: url) else {
             return
         }
 
-        let request = NSURLRequest(URL: u)
+        let request = URLRequest(url: u)
         self.webView.loadRequest(request)
     }
     override func didReceiveMemoryWarning() {
@@ -46,9 +46,9 @@ class WebViewController: UIViewController {
 }
 
 extension WebViewController: Routable {
-    static func initWithParams(params: RouterParam?) -> UIViewController? {
+    static func initWithParams(_ params: RouterParam?) -> UIViewController? {
         let sb = UIStoryboard.init(name: "Main", bundle: nil)
-        let vc = sb.instantiateViewControllerWithIdentifier("WebViewController") as! WebViewController
+        let vc = sb.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
         vc.hidesBottomBarWhenPushed = true
         return vc
     }

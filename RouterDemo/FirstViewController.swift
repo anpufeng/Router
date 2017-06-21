@@ -10,13 +10,13 @@ import UIKit
 import Router
 
 enum Week {
-    case Monday
-    case Tuesday
-    case Wednesday
-    case Thursday
-    case Friday
-    case Saturday
-    case Sunday
+    case monday
+    case tuesday
+    case wednesday
+    case thursday
+    case friday
+    case saturday
+    case sunday
 }
 
 class ClassModel {
@@ -48,10 +48,10 @@ class FirstViewController: UIViewController {
     
     var name: String?
     var age: Int?
-    var week: Week = .Monday
+    var week: Week = .monday
     var classModel: ClassModel?
     var structModel: StructModel?
-    var closure:((name: String, age: Int) -> String)?
+    var closure:((_ name: String, _ age: Int) -> String)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,11 +61,11 @@ class FirstViewController: UIViewController {
 
     //MARK: actions
     
-    @IBAction func responseToRouterBtn(sender: UIButton) {
+    @IBAction func responseToRouterBtn(_ sender: UIButton) {
         Router.sharedInstance.open(FirstViewController.routableKey)
     }
     
-    @IBAction func responseToRouterParamsBtn(sender: UIButton) {
+    @IBAction func responseToRouterParamsBtn(_ sender: UIButton) {
         let closure = {(name: String, age: Int) -> String in {
                 return "name: \(name), age: \(age)"
             }()
@@ -73,18 +73,18 @@ class FirstViewController: UIViewController {
         
         let params: RouterParam = [FirstViewController.kStringKey: "ethanwhy",
                                    FirstViewController.kIntKey: 3,
-                                   FirstViewController.kEnumKey: Week.Monday,
+                                   FirstViewController.kEnumKey: Week.monday,
                                    FirstViewController.kClassKey: ClassModel(name: "china"),
                                    FirstViewController.kStructKey: StructModel(name: "us"),
                                    FirstViewController.kClosureKey: closure]
         
         Router.sharedInstance.open(FirstViewController.routableKey, params: params)
     }
-    @IBAction func responseToRouterWebBtn(sender: UIButton) {
+    @IBAction func responseToRouterWebBtn(_ sender: UIButton) {
         Router.sharedInstance.open(WebViewController.routableKey, animated: true) { (opened) in
             if let opened = opened as? WebViewController {
-                let time = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC)))
-                dispatch_after(time, dispatch_get_main_queue(), {
+                let time = DispatchTime.now() + Double(Int64(1 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+                DispatchQueue.main.asyncAfter(deadline: time, execute: {
                     opened.loadURL("https://www.baidu.com")
                 })
                 
@@ -92,32 +92,32 @@ class FirstViewController: UIViewController {
         }
     }
     
-    @IBAction func responseToOptionBtn(sender: AnyObject) {
+    @IBAction func responseToOptionBtn(_ sender: AnyObject) {
         Router.sharedInstance.open(SecondViewController.routableKey, options: SecondViewController.routerOption)
     }
-    @IBAction func responseToRouterOptionsNavBtn(sender: UIButton) {
+    @IBAction func responseToRouterOptionsNavBtn(_ sender: UIButton) {
         Router.sharedInstance.open(FirstNavigationController.routableKey, options: FirstNavigationController.routerOption)
     }
-    @IBAction func responseToPopBtn(sender: UIButton) {
+    @IBAction func responseToPopBtn(_ sender: UIButton) {
         Router.sharedInstance.pop()
     }
-    @IBAction func responseToWithoutAnimatBtn(sender: UIButton) {
+    @IBAction func responseToWithoutAnimatBtn(_ sender: UIButton) {
         Router.sharedInstance.pop(animated: false)
     }
     
-    @IBAction func responseToPopToRootBtn(sender: UIButton) {
+    @IBAction func responseToPopToRootBtn(_ sender: UIButton) {
         Router.sharedInstance.pop(toRoot:true, animated: true)
     }
     
     
-    @IBAction func responseToExternalWebBtn(sender: AnyObject) {
+    @IBAction func responseToExternalWebBtn(_ sender: AnyObject) {
         Router.sharedInstance.openExternal("http://www.baidu.com")
     }
-    @IBAction func responseToAlertBtn(sender: UIButton) {
-        let param = UIAlertController.alertParams(nil, message: "message", preferredStyle: .Alert)
+    @IBAction func responseToAlertBtn(_ sender: UIButton) {
+        let param = UIAlertController.alertParams(nil, message: "message", preferredStyle: .alert)
         Router.sharedInstance.open(UIAlertController.routableKey, params: param, options: UIAlertController.defaultRouterOptions, animated: true) { (opened) in
             if let alertController = opened as? UIAlertController {
-                let okAction = UIAlertAction(title: "ok", style: .Default, handler: { (alertAction) in
+                let okAction = UIAlertAction(title: "ok", style: .default, handler: { (alertAction) in
                     print("clicked ok")
                 })
                 
@@ -125,7 +125,7 @@ class FirstViewController: UIViewController {
             }
         }
     }
-    @IBAction func responseToNoXibBtn(sender: UIButton) {
+    @IBAction func responseToNoXibBtn(_ sender: UIButton) {
         let params: RouterParam = [NoXibViewController.kAgeKey: 999,
                                    NoXibViewController.kNameKey: "immortal"]
         
@@ -152,9 +152,9 @@ class FirstViewController: UIViewController {
 //MARK: routable
 
 extension FirstViewController: Routable {
-    static func initWithParams(params: RouterParam?) -> UIViewController? {
+    static func initWithParams(_ params: RouterParam?) -> UIViewController? {
         let sb = UIStoryboard.init(name: "Main", bundle: nil)
-        let vc = sb.instantiateViewControllerWithIdentifier("FirstViewController") as! FirstViewController
+        let vc = sb.instantiateViewController(withIdentifier: "FirstViewController") as! FirstViewController
         vc.hidesBottomBarWhenPushed = true
         
         if let params = params {
@@ -167,7 +167,7 @@ extension FirstViewController: Routable {
             converter.valueWithKey(kClosureKey, out: &vc.closure)
             
             print("got params String name: \(vc.name)\n Int age : \(vc.age)\n Enum week: \(vc.week)\n Class: \(vc.classModel?.description)\n Struct: \(vc.structModel)\n")
-            let result = vc.closure?(name: "Lily", age: 10)
+            let result = vc.closure?("Lily", 10)
             print("closure result: \(result)")
         }
         

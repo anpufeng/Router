@@ -13,24 +13,24 @@ import Foundation
 public typealias  RouterParam = [String: Any]
 
 public enum ExternalRouterType {
-    case Safari
-    case Phone
-    case SMS
-    case Mail
-    case OtherApp
+    case safari
+    case phone
+    case sms
+    case mail
+    case otherApp
     
-    func router(url: String) -> NSURL? {
+    func router(_ url: String) -> URL? {
         switch self {
-        case .Safari:
-            return NSURL(string: url)
-        case .Phone:
-            return NSURL(string: "tel:\(url)")
-        case .SMS:
-            return NSURL(string: "sms:\(url)")
-        case .Mail:
-            return NSURL(string: "mailto:\(url)")
-        case .OtherApp:
-            return NSURL(string: url)
+        case .safari:
+            return URL(string: url)
+        case .phone:
+            return URL(string: "tel:\(url)")
+        case .sms:
+            return URL(string: "sms:\(url)")
+        case .mail:
+            return URL(string: "mailto:\(url)")
+        case .otherApp:
+            return URL(string: url)
         }
     }
 }
@@ -42,7 +42,7 @@ public protocol Routable {
      类的初始化方法 
      - params 传参字典
      */
-    static func initWithParams(params: RouterParam?) -> UIViewController?
+    static func initWithParams(_ params: RouterParam?) -> UIViewController?
     /**
      每个类跳转对应的key
      */
@@ -51,7 +51,7 @@ public protocol Routable {
 
 //MARK: RouterOptions
 
-public class RouterOptions {
+open class RouterOptions {
     let presentationStyle: UIModalPresentationStyle
     let transitionStyle: UIModalTransitionStyle
     /** 只有在isModal为true是才会考虑modal下的style */
@@ -59,8 +59,8 @@ public class RouterOptions {
     /** 只对pushViewController有效 */
     var shouldOpenAsRoot = false
     
-    public class func defaultOptions() -> RouterOptions {
-        return RouterOptions(presentationStyle: .FullScreen, transitionStyle: .CoverVertical, isModal: true, isRoot: false)
+    open class func defaultOptions() -> RouterOptions {
+        return RouterOptions(presentationStyle: .fullScreen, transitionStyle: .coverVertical, isModal: true, isRoot: false)
     }
     
     public init(presentationStyle: UIModalPresentationStyle, transitionStyle: UIModalTransitionStyle) {
@@ -78,10 +78,10 @@ public class RouterOptions {
 
 //MARK: Router
 
-public class Router {
-    public static let sharedInstance = Router()
+open class Router {
+    open static let sharedInstance = Router()
     
-    public var navigationController: UINavigationController?
+    open var navigationController: UINavigationController?
     var classes: [String: String] = [:]
     
     /**
@@ -89,7 +89,7 @@ public class Router {
      - key 对应的routableKey
      - className 调用vc.description()函数
      */
-    public func map(key: String, className: String) -> Void {
+    open func map(_ key: String, className: String) -> Void {
         classes[key] = className
     }
     
@@ -99,19 +99,19 @@ public class Router {
      打开对应key的界面
      - completion 完成push/present后会调用此closure, 在animated完成前, 参数为通过key刚初始化的ViewControler
      */
-    public func open(key: String, animated: Bool = true, completion: ((opened: UIViewController?) -> Void)? = nil) {
+    open func open(_ key: String, animated: Bool = true, completion: ((_ opened: UIViewController?) -> Void)? = nil) {
        open(key, params: nil, options: nil, animated: animated, completion: completion, unused: true)
     }
     
-    public func open(key:String, params: RouterParam, animated: Bool = true, completion: ((opened: UIViewController?) -> Void)? = nil) {
+    open func open(_ key:String, params: RouterParam, animated: Bool = true, completion: ((_ opened: UIViewController?) -> Void)? = nil) {
        open(key, params: params, options: nil, animated: animated, completion: completion, unused: true)
     }
     
-    public func open(key:String, options: RouterOptions, animated: Bool = true, completion: ((opened: UIViewController?) -> Void)? = nil) {
+    open func open(_ key:String, options: RouterOptions, animated: Bool = true, completion: ((_ opened: UIViewController?) -> Void)? = nil) {
        open(key, params: nil, options: options, animated: animated, completion: completion, unused: true)
     }
     
-    public func open(key: String, params: RouterParam, options: RouterOptions, animated: Bool, completion: ((opened: UIViewController?) -> Void)? = nil) {
+    open func open(_ key: String, params: RouterParam, options: RouterOptions, animated: Bool, completion: ((_ opened: UIViewController?) -> Void)? = nil) {
        open(key, params: params, options: options, animated: animated, completion: completion, unused: true)
     }
  
@@ -120,21 +120,21 @@ public class Router {
  
      - parameter unused:     仅为区分函数调用
      */
-    private func open(key: String, params: RouterParam?, options: RouterOptions?, animated: Bool, completion: ((opened: UIViewController?) -> Void)?, unused: Bool) {
+    fileprivate func open(_ key: String, params: RouterParam?, options: RouterOptions?, animated: Bool, completion: ((_ opened: UIViewController?) -> Void)?, unused: Bool) {
         guard let nav = navigationController else {
-             completion?(opened: nil)
+             completion?(nil)
             return
         }
         
-        guard let clsName = classes[key], cls = NSClassFromString(clsName) as? Routable.Type else {
+        guard let clsName = classes[key], let cls = NSClassFromString(clsName) as? Routable.Type else {
             print("can not find the maaped vc, make sure implement protocol routable and call map method")
-            completion?(opened: nil)
+            completion?(nil)
             return
         }
         
         if nav.presentedViewController != nil {
             print("dismiss the vc that has been presented:\(nav.presentedViewController)")
-            nav.dismissViewControllerAnimated(false, completion: nil)
+            nav.dismiss(animated: false, completion: nil)
         }
         
         guard let vc = cls.initWithParams(params) else {
@@ -146,48 +146,48 @@ public class Router {
             if options.isModal {
                 vc.modalTransitionStyle = options.transitionStyle
                 vc.modalPresentationStyle = options.presentationStyle
-                nav.presentViewController(vc, animated: animated, completion: nil)
-                completion?(opened: vc)
+                nav.present(vc, animated: animated, completion: nil)
+                completion?(vc)
                 
             } else {
                 if options.shouldOpenAsRoot {
                     nav.setViewControllers([vc], animated: animated)
-                    completion?(opened: vc)
+                    completion?(vc)
                 } else {
                     nav.pushViewController(vc, animated: animated)
-                    completion?(opened: vc)
+                    completion?(vc)
                 }
             }
         } else {
             nav.pushViewController(vc, animated: animated)
-            completion?(opened: vc)
+            completion?(vc)
         }
     }
     
    
-    public func openExternal(url: String, type: ExternalRouterType = .Safari) {
+    open func openExternal(_ url: String, type: ExternalRouterType = .safari) {
         guard let routerURL = type.router(url) else {
             return
         }
        
-        UIApplication.sharedApplication().openURL(routerURL)
+        UIApplication.shared.openURL(routerURL)
     }
     
     //MARK:  pop
     
-    public func pop(animated animated: Bool = true) {
+    open func pop(animated: Bool = true) {
         guard let nav = navigationController else {
             return
         }
         
         if nav.presentedViewController != nil {
-            nav.dismissViewControllerAnimated(animated, completion: nil)
+            nav.dismiss(animated: animated, completion: nil)
         } else {
-            nav.popViewControllerAnimated(animated)
+            nav.popViewController(animated: animated)
         }
     }
     
-    public func pop(to to: String, animated: Bool) {
+    open func pop(to: String, animated: Bool) {
         guard let nav = navigationController else {
             print("no navigationController")
             return
@@ -209,9 +209,9 @@ public class Router {
         
         if let presented = nav.presentedViewController {
             if presented.description == classes[to] {
-                nav.dismissViewControllerAnimated(animated, completion: nil)
+                nav.dismiss(animated: animated, completion: nil)
             } else {
-                nav.dismissViewControllerAnimated(false, completion: nil)
+                nav.dismiss(animated: false, completion: nil)
                 popTo()
             }
         } else {
@@ -220,18 +220,18 @@ public class Router {
     }
  
     
-    public func pop(toRoot toRoot: Bool, animated: Bool = true) {
+    open func pop(toRoot: Bool, animated: Bool = true) {
         guard let nav = navigationController else {
             return
         }
         
         if nav.presentedViewController != nil {
-            nav.dismissViewControllerAnimated(animated, completion: nil)
+            nav.dismiss(animated: animated, completion: nil)
         } else {
             if toRoot {
-                nav.popToRootViewControllerAnimated(animated)
+                nav.popToRootViewController(animated: animated)
             } else {
-                nav.popViewControllerAnimated(animated)
+                nav.popViewController(animated: animated)
             }
         }
     }
@@ -241,21 +241,21 @@ public class Router {
 //MARK: RouteParamsConvertable
 
 public protocol RouteParamsConvertable {
-    func valueWithKey<T>(key: String, inout out: T?) -> Void
-    func valueWithKey<T>(key: String, inout out: T) -> Void
+    func valueWithKey<T>(_ key: String, out: inout T?) -> Void
+    func valueWithKey<T>(_ key: String, out: inout T) -> Void
 }
 
 
 //MARK: RouterParams
 
-public class RouterParamsConverter: RouteParamsConvertable {
+open class RouterParamsConverter: RouteParamsConvertable {
    
     var params: RouterParam
-    public func valueWithKey<T>(key: String, inout out: T?) -> Void {
+    open func valueWithKey<T>(_ key: String, out: inout T?) -> Void {
         out = (params[key] as? T)
     }
     
-    public func valueWithKey<T>(key: String, inout out: T) -> Void {
+    open func valueWithKey<T>(_ key: String, out: inout T) -> Void {
         out = (params[key] as! T)
     }
     

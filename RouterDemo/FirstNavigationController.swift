@@ -36,9 +36,9 @@ class FirstNavigationController: UINavigationController {
 }
 
 extension FirstNavigationController: Routable {
-    static func initWithParams(params: RouterParam?) -> UIViewController? {
+    static func initWithParams(_ params: RouterParam?) -> UIViewController? {
         let sb = UIStoryboard.init(name: "Main", bundle: nil)
-        let vc = sb.instantiateViewControllerWithIdentifier("SecondViewController") as! SecondViewController
+        let vc = sb.instantiateViewController(withIdentifier: "SecondViewController") as! SecondViewController
         vc.hidesBottomBarWhenPushed = true
         let nav = UINavigationController(rootViewController: vc)
         
@@ -50,6 +50,6 @@ extension FirstNavigationController: Routable {
     }
     
     static var routerOption: RouterOptions {
-        return RouterOptions(presentationStyle: .Popover, transitionStyle: .FlipHorizontal, isModal: true, isRoot: false)
+        return RouterOptions(presentationStyle: .popover, transitionStyle: .flipHorizontal, isModal: true, isRoot: false)
     }
 }

@@ -22,12 +22,12 @@ class SecondViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func responseToPopBtn(sender: UIButton) {
+    @IBAction func responseToPopBtn(_ sender: UIButton) {
         Router.sharedInstance.pop()
     }
 
-    @IBAction func responseToOptionModalBtn(sender: AnyObject) {
-        let option = RouterOptions(presentationStyle: .FormSheet, transitionStyle: .FlipHorizontal, isModal: true, isRoot: false)
+    @IBAction func responseToOptionModalBtn(_ sender: AnyObject) {
+        let option = RouterOptions(presentationStyle: .formSheet, transitionStyle: .flipHorizontal, isModal: true, isRoot: false)
         Router.sharedInstance.open(SecondViewController.routableKey, options: option)
     }
     /*
@@ -46,9 +46,9 @@ class SecondViewController: UIViewController {
 
 extension SecondViewController: Routable {
     
-    static func initWithParams(params: RouterParam?) -> UIViewController? {
+    static func initWithParams(_ params: RouterParam?) -> UIViewController? {
         let sb = UIStoryboard.init(name: "Main", bundle: nil)
-        let vc = sb.instantiateViewControllerWithIdentifier("SecondViewController") as! SecondViewController
+        let vc = sb.instantiateViewController(withIdentifier: "SecondViewController") as! SecondViewController
         vc.hidesBottomBarWhenPushed = true
         
         return vc
@@ -59,6 +59,6 @@ extension SecondViewController: Routable {
     }
     
     static var routerOption: RouterOptions {
-       return RouterOptions(presentationStyle: .FormSheet, transitionStyle: .FlipHorizontal, isModal: true, isRoot: false)
+       return RouterOptions(presentationStyle: .formSheet, transitionStyle: .flipHorizontal, isModal: true, isRoot: false)
     }
 }

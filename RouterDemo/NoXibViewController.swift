@@ -35,7 +35,7 @@ class NoXibViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.whiteColor()
+        self.view.backgroundColor = UIColor.white
     }
     
 }
@@ -44,14 +44,14 @@ class NoXibViewController: UIViewController {
 //MARK: routable
 
 extension NoXibViewController: Routable {
-    static func initWithParams(params: RouterParam?) -> UIViewController? {
+    static func initWithParams(_ params: RouterParam?) -> UIViewController? {
         if let params = params {
             let converter = RouterParamsConverter(params: params)
             var age: Int?
             var name: String?
             converter.valueWithKey(kAgeKey, out: &age)
             converter.valueWithKey(kNameKey, out: &name)
-            guard let realAge = age, realName = name else {
+            guard let realAge = age, let realName = name else {
                 return nil
             }
             return NoXibViewController(age: realAge, name: realName)

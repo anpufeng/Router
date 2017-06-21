@@ -9,17 +9,17 @@
 import Foundation
 
 extension UIAlertController: Routable {
-    public class func alertParams(title: String?, message: String?, preferredStyle: UIAlertControllerStyle) -> RouterParam {
+    public class func alertParams(_ title: String?, message: String?, preferredStyle: UIAlertControllerStyle) -> RouterParam {
         return ["title": title,
                 "message": message,
                 "preferredStyle": preferredStyle]
     }
     
     public class var defaultRouterOptions: RouterOptions {
-        return RouterOptions(presentationStyle: .FullScreen, transitionStyle: .CoverVertical, isModal: true, isRoot: false)
+        return RouterOptions(presentationStyle: .fullScreen, transitionStyle: .coverVertical, isModal: true, isRoot: false)
     }
     
-    public static func initWithParams(params: RouterParam?) -> UIViewController? {
+    public static func initWithParams(_ params: RouterParam?) -> UIViewController? {
         guard let params = params else {
             return nil
         }
@@ -32,7 +32,7 @@ extension UIAlertController: Routable {
         converter.valueWithKey("message", out: &message)
         converter.valueWithKey("preferredStyle", out: &style)
         
-        return UIAlertController(title: title, message: message, preferredStyle: style ?? .Alert)
+        return UIAlertController(title: title, message: message, preferredStyle: style ?? .alert)
     }
    
     public static var routableKey:String {
